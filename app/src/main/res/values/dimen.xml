@@ -1,0 +1,51 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <!-- Padding and Margins -->
+    <dimen name="padding_minus_4">-4dp</dimen>
+    <dimen name="padding_minus_8">-8dp</dimen>
+    <dimen name="padding_small_1">1dp</dimen>
+    <dimen name="padding_small_2">2dp</dimen>
+    <dimen name="padding_small_4">4dp</dimen>
+    <dimen name="padding_small_6">6dp</dimen>
+    <dimen name="padding_medium_8">8dp</dimen>
+    <dimen name="padding_medium_10">10dp</dimen>
+    <dimen name="padding_medium_12">12dp</dimen>
+    <dimen name="padding_medium_14">14dp</dimen>
+    <dimen name="padding_normal_16">16dp</dimen>
+    <dimen name="padding_normal_18">18dp</dimen>
+    <dimen name="padding_normal_20">20dp</dimen>
+    <dimen name="padding_normal_24">24dp</dimen>
+    <dimen name="padding_large_28">28dp</dimen>
+    <dimen name="padding_large_32">32dp</dimen>
+    <dimen name="padding_large_36">36dp</dimen>
+    <dimen name="padding_large_48">48dp</dimen>
+    <dimen name="padding_extra_large_60">60dp</dimen>
+    <dimen name="padding_extra_large_62">62dp</dimen>
+    <dimen name="padding_extra_large_68">68dp</dimen>
+    <dimen name="padding_extra_large_72">72dp</dimen>
+
+
+    <!-- Fonts -->
+    <dimen name="text_size_small_8">8sp</dimen>
+    <dimen name="text_size_small_10">10sp</dimen>
+    <dimen name="text_size_small_11">11sp</dimen>
+    <dimen name="text_size_small_12">12sp</dimen>
+    <dimen name="text_size_medium_14">14sp</dimen>
+    <dimen name="text_size_medium_16">16sp</dimen>
+    <dimen name="text_size_medium_18">18sp</dimen>
+    <dimen name="text_size_medium_20">20sp</dimen>
+    <dimen name="text_size_large_22">22sp</dimen>
+    <dimen name="text_size_large_26">26sp</dimen>
+    <dimen name="text_size_large_30">30sp</dimen>
+    <dimen name="text_size_large_38">38sp</dimen>
+    <dimen name="text_size_extra_large_44">44sp</dimen>
+    <dimen name="text_size_extra_large_50">50sp</dimen>
+
+
+    <!--Additional...-->
+
+</resources>
