@@ -1,9 +1,11 @@
-package app.anshika.blueprint;
+package app.anshika.blueprint.feature;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class HomeActivity extends AppCompatActivity {
+import app.anshika.blueprint.R;
+import app.anshika.blueprint.baseui.BaseActivity;
+
+public class HomeActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
