@@ -8,8 +8,11 @@ In the MVVM architecture, Views react to changes in the ViewModel without being 
 
 Before exploring this, you should familiarize yourself with the following topics:
 
-* The [Livedata](https://developer.android.com/topic/libraries/architecture/livedata)
-* The [MVVM-databinding](https://developer.android.com/topic/libraries/data-binding/)
-* The [MVVM](https://developer.android.com/topic/libraries/architecture/viewmodel)
-* The [Dagger](https://google.github.io/dagger/)
+* [Livedata](https://developer.android.com/topic/libraries/architecture/livedata)
+* [MVVM-databinding](https://developer.android.com/topic/libraries/data-binding/)
+* [MVVM](https://developer.android.com/topic/libraries/architecture/viewmodel)
+* [Dagger](https://google.github.io/dagger/)
+* [Retrofit](https://square.github.io/retrofit/)
+* [Rx Java]
+
 
