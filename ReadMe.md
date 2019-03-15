@@ -11,4 +11,5 @@ Before exploring this, you should familiarize yourself with the following topics
 * The [Livedata](https://developer.android.com/topic/libraries/architecture/livedata)
 * The [MVVM-databinding](https://developer.android.com/topic/libraries/data-binding/)
 * The [MVVM](https://developer.android.com/topic/libraries/architecture/viewmodel)
+* The [Dagger](https://google.github.io/dagger/)
 
