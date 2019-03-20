@@ -34,7 +34,7 @@ public class BlueprintApplication extends Application {
      */
 
     private void setUpDagger() {
-        mAppComponent = DaggerAppComponent.builder().applicationModule(new ApplicationModule(this)).build();
+        mAppComponent = DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(this)).build();
     }
 
     /* *
@@ -45,6 +45,5 @@ public class BlueprintApplication extends Application {
     public ApplicationComponent getDaggerAppComponent() {
         return mAppComponent;
     }
-
 
 }

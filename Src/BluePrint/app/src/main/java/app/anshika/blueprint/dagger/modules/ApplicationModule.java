@@ -2,6 +2,8 @@ package app.anshika.blueprint.dagger.modules;
 
 import android.content.Context;
 
+import javax.inject.Inject;
+
 import app.anshika.blueprint.BlueprintApplication;
 import dagger.Module;
 import dagger.Provides;
@@ -13,7 +15,7 @@ import dagger.Provides;
 public class ApplicationModule {
 
 
-    private BlueprintApplication mApplication;
+    public BlueprintApplication mApplication;
 
     public ApplicationModule(BlueprintApplication application) {
         mApplication = application;

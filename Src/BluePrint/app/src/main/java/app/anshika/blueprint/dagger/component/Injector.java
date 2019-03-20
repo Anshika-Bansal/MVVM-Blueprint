@@ -7,6 +7,6 @@ import app.anshika.blueprint.feature.Facts.FactsActivity;
 
 interface Injector {
 
-    public void provideIn(FactsActivity activity);
+    void provideIn(FactsActivity activity);
 
 }

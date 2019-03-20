@@ -14,7 +14,7 @@ ext {
     // Architecture Components dependencies
     roomVersion = "1.0.0"
     daggerVersion = "2.15"
-    archLifecycleVersion = "1.0.0-rc1"
+    archLifecycleVersion = "2.1.0-alpha02"
 }
 
 buildscript {
@@ -24,6 +24,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.android.tools.build.jetifier:jetifier-processor:1.0.0-beta02'
 
     }
 }

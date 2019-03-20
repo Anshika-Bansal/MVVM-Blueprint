@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.hadilq.liveevent.LiveEvent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -22,7 +23,7 @@ public class FactsViewModel extends BaseViewModel {
 
 
     private FactsRepository mFactsRepository;
-    private MutableLiveData<List<FactsModel>> mFactsLiveData;
+    private MutableLiveData<ArrayList<FactsModel>> mFactsLiveData;
     private LiveEvent<String> mFactsLiveEvent;
     private LiveEvent<String> mTempEventData;
 
@@ -38,7 +39,7 @@ public class FactsViewModel extends BaseViewModel {
     }
 
 
-    private MutableLiveData<List<FactsModel>> getFactsLiveData() {
+    public MutableLiveData<ArrayList<FactsModel>> getFactsLiveData() {
         return mFactsLiveData;
     }
 
@@ -46,9 +47,10 @@ public class FactsViewModel extends BaseViewModel {
         return mFactsLiveEvent;
     }
 
-    private void loadFacts() {
+    public void loadFacts() {
         addSubscription(
-                mFactsRepository.getFacts().subscribeWith(new BaseNetworkSubscriber<List<FactsModel>>(getApplication()) {
+                mFactsRepository.getFacts()
+                        .subscribeWith(new BaseNetworkSubscriber<List<FactsModel>>(getApplication()) {
                     @Override
                     public void onNext(List<FactsModel> factsModels) {
                         super.onNext(factsModels);

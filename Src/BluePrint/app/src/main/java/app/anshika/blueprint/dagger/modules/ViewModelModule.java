@@ -23,7 +23,7 @@ public abstract class ViewModelModule {
 
 
     // add more ViewModels
-
+    @Binds
     abstract ViewModelProvider.Factory bindViewModelFactory(BaseViewModelFactory factory);
 
 

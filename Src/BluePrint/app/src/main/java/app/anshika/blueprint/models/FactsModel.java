@@ -11,13 +11,13 @@ import java.util.List;
 public class FactsModel {
 
     @SerializedName("id")
-    private long id;
+    public long id;
 
     @SerializedName("title")
-    private String title;
+    public String title;
 
     @SerializedName("description")
-    private String description;
+    public String description;
 
 
     public long getId() {
