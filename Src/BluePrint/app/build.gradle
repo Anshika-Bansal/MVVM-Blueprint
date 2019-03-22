@@ -34,7 +34,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-      //  android.defaultConfig.javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true
+        //  android.defaultConfig.javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true
     }
     buildTypes {
 
@@ -64,9 +64,9 @@ android {
         }
 
     }
-   /* dataBinding {
-        enabled = true
-    }*/
+     dataBinding {
+         enabled = true
+     }
     lintOptions {
         abortOnError false
         disable 'MissingTranslation'
@@ -94,7 +94,6 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
-
 
     //RxJava
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'

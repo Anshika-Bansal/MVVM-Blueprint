@@ -11,7 +11,7 @@ import io.reactivex.observers.DisposableObserver;
 /*Base view model class for all the view models used throughout application to share common methods...*/
 public class BaseViewModel extends AndroidViewModel {
 
-    private CompositeDisposable mCompositeSubscription;
+    private CompositeDisposable mCompositeSubscription = new CompositeDisposable();
 
     public BaseViewModel(@NonNull Application application) {
         super(application);

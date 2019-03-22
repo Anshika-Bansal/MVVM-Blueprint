@@ -3,9 +3,10 @@ package app.anshika.blueprint;
 import android.app.Application;
 
 import app.anshika.blueprint.dagger.component.ApplicationComponent;
+import app.anshika.blueprint.dagger.component.DaggerApplicationComponent;
 import app.anshika.blueprint.dagger.modules.ApplicationModule;
 
- /*Created by Anshika Bansal (March 2019 )*/
+/*Created by Anshika Bansal (March 2019 )*/
 
 /*This is a application class where we can setup basic components like Dagger,Image loader ets.*/
 

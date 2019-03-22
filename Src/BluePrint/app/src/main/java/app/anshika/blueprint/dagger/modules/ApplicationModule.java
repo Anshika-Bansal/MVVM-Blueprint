@@ -1,5 +1,6 @@
 package app.anshika.blueprint.dagger.modules;
 
+import android.app.Application;
 import android.content.Context;
 
 import javax.inject.Inject;
@@ -15,14 +16,14 @@ import dagger.Provides;
 public class ApplicationModule {
 
 
-    public BlueprintApplication mApplication;
+    public Application mApplication;
 
-    public ApplicationModule(BlueprintApplication application) {
+    public ApplicationModule(Application application) {
         mApplication = application;
     }
 
     @Provides
-    public BlueprintApplication getApplication() {
+    public Application getApplication() {
         return mApplication;
     }
 

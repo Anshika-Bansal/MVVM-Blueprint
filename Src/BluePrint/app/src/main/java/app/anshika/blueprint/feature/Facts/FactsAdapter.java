@@ -61,7 +61,7 @@ public class FactsAdapter extends RecyclerView.Adapter<FactsAdapter.FactsViewHol
         }
     }
 
-    public void updateData(ArrayList<FactsModel> list) {
+     void updateData(ArrayList<FactsModel> list) {
         mFactsList = list;
         notifyDataSetChanged();
     }

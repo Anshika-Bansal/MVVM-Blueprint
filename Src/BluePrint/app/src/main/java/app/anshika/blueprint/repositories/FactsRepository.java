@@ -1,5 +1,6 @@
 package app.anshika.blueprint.repositories;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -23,7 +24,7 @@ public class FactsRepository {
     }
 
 
-    public Observable<List<FactsModel>> getFacts() {
+    public Observable<ArrayList<FactsModel>> getFacts() {
         return mApiService.getFacts().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 }

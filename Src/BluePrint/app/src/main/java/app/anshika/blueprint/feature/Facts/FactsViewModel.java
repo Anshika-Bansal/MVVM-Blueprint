@@ -23,9 +23,7 @@ public class FactsViewModel extends BaseViewModel {
 
 
     private FactsRepository mFactsRepository;
-    private MutableLiveData<ArrayList<FactsModel>> mFactsLiveData;
-    private LiveEvent<String> mFactsLiveEvent;
-    private LiveEvent<String> mTempEventData;
+    private MutableLiveData<ArrayList<FactsModel>> mFactsLiveData = new MutableLiveData<>();
 
 
     @Inject
@@ -34,38 +32,32 @@ public class FactsViewModel extends BaseViewModel {
         mFactsRepository = repository;
     }
 
-    private LiveEvent<String> getTempEventData() {
-        return mTempEventData;
-    }
-
 
     public MutableLiveData<ArrayList<FactsModel>> getFactsLiveData() {
         return mFactsLiveData;
     }
 
-    private LiveEvent<String> getFactsEventData() {
-        return mFactsLiveEvent;
-    }
 
     public void loadFacts() {
         addSubscription(
                 mFactsRepository.getFacts()
-                        .subscribeWith(new BaseNetworkSubscriber<List<FactsModel>>(getApplication()) {
-                    @Override
-                    public void onNext(List<FactsModel> factsModels) {
-                        super.onNext(factsModels);
-                    }
+                        .subscribeWith(new BaseNetworkSubscriber<ArrayList<FactsModel>>(getApplication()) {
+                            @Override
+                            public void onNext(ArrayList<FactsModel> factsModels) {
+                                super.onNext(factsModels);
+                                mFactsLiveData.setValue(factsModels);
+                            }
 
-                    @Override
-                    public void onComplete() {
-                        super.onComplete();
-                    }
+                            @Override
+                            public void onComplete() {
+                                super.onComplete();
+                            }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        super.onError(e);
-                    }
-                }));
+                            @Override
+                            public void onError(Throwable e) {
+                                super.onError(e);
+                            }
+                        }));
     }
 
 
