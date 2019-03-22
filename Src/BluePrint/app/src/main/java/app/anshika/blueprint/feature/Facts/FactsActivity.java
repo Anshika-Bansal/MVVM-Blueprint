@@ -41,7 +41,7 @@ public class FactsActivity extends BaseActivity {
         observeFacts();
         observeScreenState();
 
-        mFactsViewModel.loadFacts();
+        mFactsViewModel.refreshFacts();
     }
 
 
@@ -57,7 +57,6 @@ public class FactsActivity extends BaseActivity {
         if (mFactsViewModel.getFactsLiveData() != null)
 
             mFactsViewModel.getFactsLiveData().observe(this, list -> {
-
                 mAdapter.updateData(list);
 
             });

@@ -110,6 +110,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.archLifecycleVersion"
     implementation 'com.github.hadilq.liveevent:liveevent:1.0.0'
 
-    annotationProcessor 'com.android.tools.build.jetifier:jetifier-core:1.0.0-beta02'
+    //Room DataBase
+    implementation "androidx.room:room-runtime:$roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$roomVersion"
+
 
 }

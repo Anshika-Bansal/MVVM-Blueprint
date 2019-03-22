@@ -1,19 +1,29 @@
 package app.anshika.blueprint.feature.Facts;
 
+import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Handler;
 
 import com.hadilq.liveevent.LiveEvent;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import app.anshika.blueprint.AppUtils.BaseUtils;
+import app.anshika.blueprint.DataBase.DataBaseHelper;
 import app.anshika.blueprint.baseui.BaseViewModel;
 import app.anshika.blueprint.models.FactsModel;
 import app.anshika.blueprint.networking.BaseNetworkSubscriber;
+import app.anshika.blueprint.networking.Resource;
 import app.anshika.blueprint.repositories.FactsRepository;
 /*Created by Anshika Bansal (March 2019 )*/
 
@@ -23,29 +33,38 @@ public class FactsViewModel extends BaseViewModel {
 
 
     private FactsRepository mFactsRepository;
-    private MutableLiveData<ArrayList<FactsModel>> mFactsLiveData = new MutableLiveData<>();
+    private Application mContext;
 
 
     @Inject
-    public FactsViewModel(@NonNull Application application, FactsRepository repository) {
+    FactsViewModel(@NonNull Application application, FactsRepository repository) {
         super(application);
         mFactsRepository = repository;
+        mContext = application;
     }
 
 
-    public MutableLiveData<ArrayList<FactsModel>> getFactsLiveData() {
-        return mFactsLiveData;
+    MutableLiveData<List<FactsModel>> getFactsLiveData() {
+        return mFactsRepository.getFactsLiveData();
     }
 
 
-    public void loadFacts() {
+    void refreshFacts() {
+        if (BaseUtils.checkNetwork(mContext)) {
+            loadFacts();
+        } else
+            mFactsRepository.loadFactsFromDb();
+    }
+
+
+    private void loadFacts() {
         addSubscription(
-                mFactsRepository.getFacts()
+                mFactsRepository.getFactsFromServer()
                         .subscribeWith(new BaseNetworkSubscriber<ArrayList<FactsModel>>(getApplication()) {
                             @Override
                             public void onNext(ArrayList<FactsModel> factsModels) {
                                 super.onNext(factsModels);
-                                mFactsLiveData.setValue(factsModels);
+                                mFactsRepository.saveFact(factsModels);
                             }
 
                             @Override
@@ -56,9 +75,9 @@ public class FactsViewModel extends BaseViewModel {
                             @Override
                             public void onError(Throwable e) {
                                 super.onError(e);
+
                             }
                         }));
     }
-
 
 }

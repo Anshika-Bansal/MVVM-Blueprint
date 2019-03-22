@@ -13,6 +13,8 @@ Before exploring this, you should familiarize yourself with the following topics
 * [MVVM](https://developer.android.com/topic/libraries/architecture/viewmodel)
 * [Dagger](https://google.github.io/dagger/)
 * [Retrofit](https://square.github.io/retrofit/)
-* [Rx Java]
+* [RX java](https://github.com/ReactiveX/RxJava)
+* [Room](https://developer.android.com/topic/libraries/architecture/room)
+
 
 

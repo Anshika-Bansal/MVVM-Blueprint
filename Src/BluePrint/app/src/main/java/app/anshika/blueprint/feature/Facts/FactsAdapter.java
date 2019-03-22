@@ -18,7 +18,7 @@ import io.reactivex.annotations.NonNull;
 
 public class FactsAdapter extends RecyclerView.Adapter<FactsAdapter.FactsViewHolder> {
 
-    private ArrayList<FactsModel> mFactsList;
+    private List<FactsModel> mFactsList;
     private Context mContext;
 
     public FactsAdapter(Context context) {
@@ -61,7 +61,7 @@ public class FactsAdapter extends RecyclerView.Adapter<FactsAdapter.FactsViewHol
         }
     }
 
-     void updateData(ArrayList<FactsModel> list) {
+     void updateData(List<FactsModel> list) {
         mFactsList = list;
         notifyDataSetChanged();
     }
