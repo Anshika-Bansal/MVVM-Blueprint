@@ -1,10 +1,8 @@
 package app.anshika.blueprint.feature.Facts;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import app.anshika.blueprint.BlueprintApplication;
 import app.anshika.blueprint.R;
 import app.anshika.blueprint.baseui.BaseActivity;
@@ -41,7 +39,7 @@ public class FactsActivity extends BaseActivity {
         observeFacts();
         observeScreenState();
 
-        mFactsViewModel.refreshFacts();
+        mFactsViewModel.fetchFacts();
     }
 
 
@@ -57,6 +55,7 @@ public class FactsActivity extends BaseActivity {
         if (mFactsViewModel.getFactsLiveData() != null)
 
             mFactsViewModel.getFactsLiveData().observe(this, list -> {
+                System.out.println("activity observer:: ");
                 mAdapter.updateData(list);
 
             });
