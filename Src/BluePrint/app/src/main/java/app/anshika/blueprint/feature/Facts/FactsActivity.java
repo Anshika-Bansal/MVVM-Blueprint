@@ -8,8 +8,11 @@ import app.anshika.blueprint.R;
 import app.anshika.blueprint.baseui.BaseActivity;
 import app.anshika.blueprint.baseui.BaseViewModelFactory;
 import app.anshika.blueprint.databinding.ActivityFactsBinding;
+import app.anshika.blueprint.models.FactsModel;
 
 import android.os.Bundle;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -34,11 +37,8 @@ public class FactsActivity extends BaseActivity {
         BlueprintApplication.getApp().getDaggerAppComponent().provideIn(this);
         mFactsViewModel = ViewModelProviders.of(this, mViewModelFactory).get(FactsViewModel.class);
 
-
         setUpRecyclerView();
         observeFacts();
-        observeScreenState();
-
         mFactsViewModel.fetchFacts();
     }
 
@@ -53,15 +53,27 @@ public class FactsActivity extends BaseActivity {
     /*Method to observe facts data change...*/
     private void observeFacts() {
         if (mFactsViewModel.getFactsLiveData() != null)
-
-            mFactsViewModel.getFactsLiveData().observe(this, list -> {
-                System.out.println("activity observer:: ");
-                mAdapter.updateData(list);
+            mFactsViewModel.getFactsLiveData().observe(this, dataStatus -> {
+                System.out.println("Data Status:: " + dataStatus.mStatus);
+                handleStates(dataStatus);
 
             });
     }
 
-    private void observeScreenState() {
 
+    /*Method used to handle the data states and update UI accordingly...*/
+    private void handleStates(FactsDataStatus<List<FactsModel>> data) {
+        switch (data.mStatus) {
+            case INPROGRESS:
+                break;
+                case COMPLETE:
+                if (data.mData != null)
+                    mAdapter.updateData(data.mData);
+                break;
+
+            case APIERROR:
+
+                break;
+        }
     }
 }

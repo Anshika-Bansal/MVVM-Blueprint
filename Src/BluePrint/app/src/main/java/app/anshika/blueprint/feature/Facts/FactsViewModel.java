@@ -26,7 +26,7 @@ public class FactsViewModel extends BaseViewModel {
     private FactsRepository mFactsRepository;
     private Application mContext;
 
-    private MediatorLiveData<List<FactsModel>> mFactsMediatorData = new MediatorLiveData<>();
+    private MediatorLiveData<FactsDataStatus<List<FactsModel>>> mFactsMediatorData = new MediatorLiveData<>();
 
     @Inject
     FactsViewModel(@NonNull Application application, FactsRepository repository) {
@@ -49,7 +49,7 @@ public class FactsViewModel extends BaseViewModel {
 
                     case SUCCESS:
                         Toast.makeText(mContext, "SUCCESS", Toast.LENGTH_SHORT).show();
-                        mFactsMediatorData.setValue(listResource.mData);
+                        mFactsMediatorData.setValue(FactsDataStatus.success(listResource.mData));
                         break;
 
                     case ERROR:
@@ -61,7 +61,7 @@ public class FactsViewModel extends BaseViewModel {
 
     }
 
-    MutableLiveData<List<FactsModel>> getFactsLiveData() {
+    MutableLiveData<FactsDataStatus<List<FactsModel>>> getFactsLiveData() {
         return mFactsMediatorData;
     }
 
