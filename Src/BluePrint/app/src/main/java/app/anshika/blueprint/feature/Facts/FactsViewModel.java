@@ -8,11 +8,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
-import app.anshika.blueprint.AppUtils.BaseUtils;
-import app.anshika.blueprint.baseui.BaseViewModel;
+import app.anshika.blueprint.apputils.BaseUtils;
 import app.anshika.blueprint.models.FactsModel;
 import app.anshika.blueprint.networking.Resource;
 import app.anshika.blueprint.repositories.FactsRepository;
@@ -20,7 +20,7 @@ import app.anshika.blueprint.repositories.FactsRepository;
 
 /*This is a view model class where we store the object(Facts) related data. */
 
-public class FactsViewModel extends BaseViewModel {
+public class FactsViewModel extends AndroidViewModel {
 
 
     private FactsRepository mFactsRepository;
@@ -33,7 +33,7 @@ public class FactsViewModel extends BaseViewModel {
         super(application);
         mFactsRepository = repository;
         mContext = application;
-
+        observeFactsData();
     }
 
 
@@ -67,7 +67,6 @@ public class FactsViewModel extends BaseViewModel {
 
 
     void fetchFacts() {
-        observeFactsData();
 
         if (BaseUtils.checkNetwork(mContext))
             mFactsRepository.loadFactsFromNetwork();
@@ -75,5 +74,10 @@ public class FactsViewModel extends BaseViewModel {
             mFactsRepository.loadFactsFromDb();
     }
 
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        mFactsRepository.clearSubscription();
 
+    }
 }

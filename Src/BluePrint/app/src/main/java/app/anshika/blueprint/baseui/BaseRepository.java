@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
 
-public class BaseRepository  {
+public class BaseRepository {
 
 
     private CompositeDisposable mCompositeSubscription = new CompositeDisposable();
@@ -21,7 +21,7 @@ public class BaseRepository  {
     }
 
 
-    protected void onCleared() {
+    public void clearSubscription() {
         mCompositeSubscription.clear();
     }
 }

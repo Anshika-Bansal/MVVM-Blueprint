@@ -1,4 +1,4 @@
-package app.anshika.blueprint.DataBase;
+package app.anshika.blueprint.database;
 
 
 import android.app.Application;

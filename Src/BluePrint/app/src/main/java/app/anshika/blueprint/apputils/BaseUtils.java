@@ -1,4 +1,4 @@
-package app.anshika.blueprint.AppUtils;
+package app.anshika.blueprint.apputils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

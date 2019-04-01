@@ -2,11 +2,14 @@ package app.anshika.blueprint.repositories;
 
 import android.app.Application;
 import android.os.AsyncTask;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.inject.Inject;
+
 import androidx.lifecycle.MutableLiveData;
-import app.anshika.blueprint.DataBase.DataBaseHelper;
+import app.anshika.blueprint.database.DataBaseHelper;
 import app.anshika.blueprint.baseui.BaseRepository;
 import app.anshika.blueprint.feature.Facts.FactsDao;
 import app.anshika.blueprint.models.FactsModel;
@@ -125,6 +128,4 @@ public class FactsRepository extends BaseRepository {
     public MutableLiveData<Resource<List<FactsModel>>> getFactsLiveData() {
         return mFactsLiveDataStatus;
     }
-
-
 }

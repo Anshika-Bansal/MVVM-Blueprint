@@ -1,4 +1,4 @@
-package app.anshika.blueprint.AppUtils;
+package app.anshika.blueprint.apputils;
 
 /*Created by Anshika Bansal (March 2019 )*/
 
