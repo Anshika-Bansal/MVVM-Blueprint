@@ -5,13 +5,18 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import app.anshika.blueprint.BlueprintApplication;
 import app.anshika.blueprint.R;
-import app.anshika.blueprint.baseui.BaseActivity;
+import app.anshika.blueprint.permissions.AbstractPermissionActivity;
+import app.anshika.blueprint.permissions.PermissionUtils;
 import app.anshika.blueprint.baseui.BaseViewModelFactory;
 import app.anshika.blueprint.databinding.ActivityFactsBinding;
 import app.anshika.blueprint.models.FactsModel;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -20,7 +25,7 @@ import javax.inject.Inject;
 /*Created by Anshika Bansal (March 2019 )*/
 
 /*This is a activity where all the Facts will display... */
-public class FactsActivity extends BaseActivity {
+public class FactsActivity extends AbstractPermissionActivity {
 
     private FactsViewModel mFactsViewModel;
     private FactsAdapter mAdapter;
@@ -40,6 +45,8 @@ public class FactsActivity extends BaseActivity {
         setUpRecyclerView();
         observeFacts();
         mFactsViewModel.fetchFacts();
+
+
     }
 
 
@@ -48,6 +55,12 @@ public class FactsActivity extends BaseActivity {
         mAdapter = new FactsAdapter(this);
         mBinding.factsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mBinding.factsRecyclerView.setAdapter(mAdapter);
+        mBinding.requestPermission.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requestLocationPermission();
+            }
+        });
     }
 
     /*Method to observe facts data change...*/
@@ -66,7 +79,7 @@ public class FactsActivity extends BaseActivity {
         switch (data.mStatus) {
             case INPROGRESS:
                 break;
-                case COMPLETE:
+            case COMPLETE:
                 if (data.mData != null)
                     mAdapter.updateData(data.mData);
                 break;
@@ -75,5 +88,24 @@ public class FactsActivity extends BaseActivity {
 
                 break;
         }
+    }
+
+    @Override
+    public View getLayoutRootView() {
+        return findViewById(R.id.root_view);
+    }
+
+    public void requestLocationPermission() {
+        String[] permissionSet = {PermissionUtils.ACCESS_COARSE_LOCATION,
+                PermissionUtils.ACCESS_FINE_LOCATION, PermissionUtils.CAMERA};
+        requestEach(new ArrayList<>(Arrays.asList(permissionSet)), permissionResult -> {
+            if (permissionResult.isPermissionGranted) {
+                Toast.makeText(FactsActivity.this, "Permission granted", Toast.LENGTH_SHORT).show();
+
+            } else if (permissionResult.isPermissionDenied) {
+                Toast.makeText(FactsActivity.this, "Permission denied", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }

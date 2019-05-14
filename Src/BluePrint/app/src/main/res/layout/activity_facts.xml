@@ -3,10 +3,21 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
+        android:id="@+id/root_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="24dp">
+
+        <TextView
+            android:id="@+id/request_permission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_medium_8"
+            android:text="Ask Permission"
+            android:textAllCaps="true"
+            android:textColor="@android:color/holo_red_dark"
+            android:textStyle="bold|italic" />
 
         <TextView
             android:id="@+id/text_data"
